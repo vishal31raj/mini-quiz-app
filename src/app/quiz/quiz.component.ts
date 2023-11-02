@@ -64,10 +64,10 @@ export class QuizComponent implements OnInit {
     }
   }
 
-  onSelectAnswer(event: any) {
-    console.log(event.target.value);
+  onSelectAnswer(selectedOption: any) {
+    console.log(selectedOption);
     this.noAnswerErr = false;
-    this.selectedAnswer = event.target.value;
+    this.selectedAnswer = selectedOption;
   }
 
   onClickNext(currentQuestion: any) {

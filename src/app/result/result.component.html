@@ -1,6 +1,15 @@
-<p *ngIf="finalScore">
+<!-- <p *ngIf="finalScore">
   Final Score: {{ finalScore.correctAnsCount }} /
   {{ finalScore.totalQuesCount }}
-</p>
+</p> -->
 
-<button class="btn btn-primary" routerLink="/home">Go to home</button>
+<div class="container py-4">
+  <div class="text-center" *ngIf="finalScore">
+    <h6 style="color: gray;">Congratulations, you've finished the quiz!</h6>
+    <h5 style="color: #4c4c4c;">Your final score is:</h5>
+
+    <h1>{{ finalScore.correctAnsCount }} / {{ finalScore.totalQuesCount }}</h1>
+
+    <button class="btn btn-secondary mt-4" routerLink="/home">Go to home</button>
+  </div>
+</div>

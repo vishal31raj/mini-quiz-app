@@ -1,33 +1,55 @@
-<div class="container">
+<div class="container py-4">
   <div *ngIf="currentQues">
-    <h5>{{ currentQues.question }}</h5>
-    <p *ngFor="let option of currentQues.options">
-      <input
-        type="radio"
-        name="option"
-        value="{{ option }}"
-        (change)="onSelectAnswer($event)"
-      />
-      {{ option }}
-    </p>
+    <h5>{{ currentQues.id + 1 }}. {{ currentQues.question }}</h5>
+    <div class="my-4">
+      <div
+        class="option-item p-2 mb-2"
+        [ngClass]="{
+          selected: selectedAnswer === option
+        }"
+        *ngFor="let option of currentQues.options; let i = index"
+        (click)="onSelectAnswer(option)"
+      >
+        <!-- <input type="radio" name="option" value="{{ option }}" /> -->
+        {{ i + 1 }}. &nbsp; {{ option }}
+      </div>
+    </div>
 
-    <p class="text-danger" *ngIf="noAnswerErr">
+    <!-- <p class="text-danger" *ngIf="noAnswerErr">
         Please select an option!
-    </p>
+    </p> -->
 
-    <button
-      class="btn btn-primary"
-      *ngIf="currentQues.id < this.questions.length - 1"
-      (click)="onClickNext(currentQues)"
-    >
-      Next
-    </button>
-    <button
-      class="btn btn-success"
-      *ngIf="currentQues.id === this.questions.length - 1"
-      (click)="onClickNext(currentQues)"
-    >
-      Submit
-    </button>
+    <div class="alert alert-danger text-center" role="alert" *ngIf="noAnswerErr">
+      Please select an option!
+    </div>
+
+    <div class="text-center">
+      <button
+        class="btn btn-primary"
+        *ngIf="currentQues.id < this.questions.length - 1"
+        (click)="onClickNext(currentQues)"
+      >
+        Next →
+      </button>
+      <button
+        class="btn btn-success"
+        *ngIf="currentQues.id === this.questions.length - 1"
+        (click)="onClickNext(currentQues)"
+      >
+        Submit
+      </button>
+    </div>
+
+    <div style="display: flex; justify-content: center" class="mt-4">
+      <div style="display: flex">
+        <div
+          class="dot-item"
+          [ngClass]="{
+            selected: currentQues.id >= i
+          }"
+          *ngFor="let item of questions; let i = index"
+        ></div>
+      </div>
+    </div>
   </div>
 </div>

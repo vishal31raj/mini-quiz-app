@@ -1,0 +1,23 @@
+.option-item {
+    /* border: 1px solid silver; */
+    background-color: #ececec;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.option-item.selected {
+    background-color: #bcd7fe;
+}
+
+.dot-item {
+    height: 10px;
+    width: 10px;
+    /* border: 1px solid silver; */
+    background-color: #ececec;
+    margin-right: 5px;
+    border-radius: 50%;
+}
+
+.dot-item.selected {
+    background-color: #3485fd;
+}
