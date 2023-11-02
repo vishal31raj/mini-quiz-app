@@ -1,0 +1,33 @@
+<div class="container">
+  <div *ngIf="currentQues">
+    <h5>{{ currentQues.question }}</h5>
+    <p *ngFor="let option of currentQues.options">
+      <input
+        type="radio"
+        name="option"
+        value="{{ option }}"
+        (change)="onSelectAnswer($event)"
+      />
+      {{ option }}
+    </p>
+
+    <p class="text-danger" *ngIf="noAnswerErr">
+        Please select an option!
+    </p>
+
+    <button
+      class="btn btn-primary"
+      *ngIf="currentQues.id < this.questions.length - 1"
+      (click)="onClickNext(currentQues)"
+    >
+      Next
+    </button>
+    <button
+      class="btn btn-success"
+      *ngIf="currentQues.id === this.questions.length - 1"
+      (click)="onClickNext(currentQues)"
+    >
+      Submit
+    </button>
+  </div>
+</div>
